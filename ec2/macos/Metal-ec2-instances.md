@@ -17,9 +17,14 @@ sudo dscl . -passwd /Users/ec2-user NewMyPassword12
 Step2:
 ### remote enabled command: 
 ## reference Link: https://www.techrepublic.com/article/how-to-enable-screen-sharing-on-macs-via-terminal/
+## and: https://repost.aws/knowledge-center/ec2-mac-instance-gui-access
 ### for all user remote enable
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -allUsers
 
+
+sudo defaults write /var/db/launchd.db/com.apple.launchd/overrides.plist com.apple.screensharing -dict Disabled -bool false
+
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.screensharing.plist
 
 
 Step3: 
